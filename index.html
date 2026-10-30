@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Gerador de Recibos</title>
+
+        <link rel="stylesheet" href="Estilos - CSS/padrão.css">
+
+        <script src="JavaScript - JS/config.js" defer></script>
+        <script src="JavaScript - JS/valor-extenso.js" defer></script>
+        <script src="JavaScript - JS/app.js" defer></script>
+    </head>
+    <body>
+        <header class="cabecalho">
+            <h1>Gerador de Recibos</h1>
+            <p>Emissão de recibos de serviços prestados</p>
+        </header>
+
+        <main class="container">
+            <section class="painel-formulario">
+                <h2>Novo recibo</h2>
+
+                <form id="form-recibo">
+                    <fieldset>
+                        <legend>Dados do pagador</legend>
+
+                        <div class="campo">
+                            <label for="nome-pagador">Nome ou razão social</label>
+                            <input
+                                type="text"
+                                id="nome-pagador"
+                                name="nomePagador"
+                                autocomplete="name"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="campo">
+                            <label for="tipo-documento">Tipo de documento</label>
+                            <select id="tipo-documento" name="tipoDocumento" required>
+                                <option value="CPF">CPF</option>
+                                <option value="RG">RG</option>
+                                <option value="CNH">CNH</option>
+                                <option value="CNPJ">CNPJ</option>
+                            </select>
+                        </div>
+
+                        <div class="campo">
+                            <label for="documento-pagador">Número do documento</label>
+                            <input
+                                type="text"
+                                id="documento-pagador"
+                                name="documentoPagador"
+                                placeholder="Digite o CPF"
+                                autocomplete="off"
+                                required
+                            >
+                            <small id="mensagem-documento"></small>
+                        </div>
+
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Detalhes do serviço</legend>
+
+                        <div class="campo">
+                            <label for="descricao-servico">Descrição do serviço</label>
+                            <textarea
+                            id="descricao-servico"
+                            name="descricaoServico"
+                            rows="4"
+                            required
+                        ></textarea>
+                        </div>
+
+                        <div class="campo">
+                            <label for="valor">Valor recebido (R$)</label>
+                            <input
+                                type="number"
+                                id="valor"
+                                name="valor"
+                                min="0.01"
+                                max="999999999.99"
+                                step="0.01"
+                                required
+                            >
+                        </div>
+
+                        <div class="campo">
+                            <label for="data-pagamento">Data do pagamento</label>
+                            <input
+                                type="date"
+                                id="data-pagamento"
+                                name="dataPagamento"
+                                required
+                            >
+                        </div>
+
+                        <div class="campo">
+                            <label for="local">Local de emissão</label>
+                            <input
+                                type="text"
+                                id="local"
+                                name="local"
+                                placeholder="Cidade/UF"
+                            >
+                        </div>
+                    </fieldset>
+
+                    <div class="acoes">
+                        <button type="submit" id="btn-gerar">
+                            Gerar recibo
+                        </button>
+
+                        <button type="button" id="btn-limpar">
+                            Limpar formulário
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="painel-previa">
+                <h2>Pré-visualização</h2>
+
+                <div id="mensagem-inicial">
+                    <p>Preencha os dados para preparar o recibo.</p>
+                </div>
+
+                <article id="recibo" class="recibo" hidden>
+                    <p class="numero-recibo">
+                        Recibo nº <span id="saida-numero"></span>
+                    </p>
+
+                    <h2>RECIBO DE PAGAMENTO</h2>
+
+                    <p id="saida-texto"></p>
+
+                    <p id="saida-valor-extenso"></p>
+
+                    <p id="saida-local-data"></p>
+
+                    <div class="assinatura">
+                        <div class="linha-assinatura"></div>
+                        <p id="saida-recebedor"></p>
+                        <p>Recebedor</p>
+                    </div>
+                </article>
+
+                <div class="acoes acoes-documento" id="acoes-documento" hidden>
+                    <button type="button" id="btn-pdf">
+                        Salvar PDF / Imprimir
+                    </button>
+                </div>
+            </section>
+        </main>
+    </body>
+</html>

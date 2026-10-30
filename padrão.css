@@ -1,0 +1,427 @@
+/* ================================
+   CONFIGURAÇÕES GERAIS
+================================ */
+
+:root {
+    --cor-fundo: #f2f4f7;
+    --cor-superficie: #ffffff;
+    --cor-texto: #252b36;
+    --cor-texto-secundario: #667085;
+    --cor-borda: #d8dee8;
+    --cor-primaria: #24476b;
+    --cor-primaria-hover: #183653;
+    --cor-secundaria: #e9edf3;
+    --cor-secundaria-hover: #dce3ed;
+    --cor-sucesso: #217346;
+    --sombra: 0 4px 16px rgba(20, 35, 55, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* ================================
+   CABEÇALHO
+================================ */
+
+.cabecalho {
+    padding: 28px 20px;
+    background: var(--cor-primaria);
+    color: #ffffff;
+    text-align: center;
+}
+
+.cabecalho h1 {
+    margin-bottom: 4px;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.cabecalho p {
+    color: #e1e8f0;
+    font-size: 1rem;
+}
+
+/* ================================
+   ÁREA PRINCIPAL
+================================ */
+
+.container {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.9fr) minmax(320px, 1.1fr);
+    gap: 24px;
+    width: min(1400px, 100%);
+    margin: 0 auto;
+    padding: 32px 24px;
+    align-items: start;
+}
+
+.painel-formulario,
+.painel-previa {
+    min-width: 0;
+    padding: 24px;
+    background: var(--cor-superficie);
+    border: 1px solid var(--cor-borda);
+    border-radius: 12px;
+    box-shadow: var(--sombra);
+}
+
+.painel-formulario > h2,
+.painel-previa > h2 {
+    margin-bottom: 22px;
+    color: var(--cor-primaria);
+    font-size: 1.35rem;
+}
+
+/* ================================
+   FORMULÁRIO
+================================ */
+
+#form-recibo {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+fieldset {
+    min-width: 0;
+    padding: 18px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+}
+
+legend {
+    padding: 0 8px;
+    color: var(--cor-primaria);
+    font-weight: 700;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.campo:last-child {
+    margin-bottom: 0;
+}
+
+.campo label {
+    font-size: 0.94rem;
+    font-weight: 600;
+}
+
+.campo input,
+.campo textarea {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #c7ced9;
+    border-radius: 6px;
+    background: #ffffff;
+    color: var(--cor-texto);
+    font: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.campo input:focus,
+.campo textarea:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 3px rgba(36, 71, 107, 0.13);
+}
+
+.campo textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.campo select {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #c7ced9;
+    border-radius: 6px;
+    background: #ffffff;
+    color: var(--cor-texto);
+    font: inherit;
+}
+
+.campo select:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 3px rgba(36, 71, 107, 0.13);
+}
+
+#mensagem-documento {
+    font-size: 0.85rem;
+}
+
+/* ================================
+   BOTÕES
+================================ */
+
+.acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.acoes button {
+    min-height: 44px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.acoes button:active {
+    transform: scale(0.98);
+}
+
+#btn-gerar,
+#btn-pdf {
+    background: var(--cor-primaria);
+    color: #ffffff;
+}
+
+#btn-gerar:hover,
+#btn-pdf:hover {
+    background: var(--cor-primaria-hover);
+}
+
+#btn-limpar {
+    background: var(--cor-secundaria);
+    color: var(--cor-texto);
+}
+
+#btn-limpar:hover {
+    background: var(--cor-secundaria-hover);
+}
+
+.acoes-documento {
+    margin-top: 20px;
+}
+
+/* ================================
+   PRÉ-VISUALIZAÇÃO
+================================ */
+
+#mensagem-inicial {
+    padding: 24px 16px;
+    border: 1px dashed var(--cor-borda);
+    border-radius: 8px;
+    color: var(--cor-texto-secundario);
+    text-align: center;
+}
+
+.recibo {
+    padding: 32px 28px;
+    background: #ffffff;
+    border: 1px solid var(--cor-borda);
+    color: #222222;
+    overflow-wrap: anywhere;
+}
+
+.numero-recibo {
+    margin-bottom: 24px;
+    color: #555555;
+    font-size: 0.9rem;
+    text-align: right;
+}
+
+.recibo h2 {
+    margin-bottom: 28px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+#saida-texto,
+#saida-valor-extenso {
+    margin-bottom: 20px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1rem;
+    line-height: 2;
+    text-align: justify;
+}
+
+#saida-local-data {
+    margin-top: 28px;
+    font-family: Georgia, "Times New Roman", serif;
+    text-align: right;
+}
+
+.assinatura {
+    width: 75%;
+    margin: 70px auto 0;
+    text-align: center;
+}
+
+.linha-assinatura {
+    width: 100%;
+    margin-bottom: 8px;
+    border-top: 1px solid #333333;
+}
+
+.assinatura p {
+    font-size: 0.9rem;
+}
+
+/* ================================
+   ACESSIBILIDADE
+================================ */
+
+button:focus-visible {
+    outline: 3px solid #7ba8d8;
+    outline-offset: 3px;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* ================================
+   RESPONSIVIDADE
+================================ */
+
+@media (max-width: 900px) {
+    .container {
+        grid-template-columns: 1fr;
+        padding: 20px 16px;
+    }
+
+    .painel-formulario,
+    .painel-previa {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cabecalho {
+        padding: 22px 14px;
+    }
+
+    .cabecalho h1 {
+        font-size: 1.65rem;
+    }
+
+    .container {
+        padding: 14px 10px;
+        gap: 16px;
+    }
+
+    .painel-formulario,
+    .painel-previa {
+        padding: 16px;
+    }
+
+    fieldset {
+        padding: 14px;
+    }
+
+    .acoes {
+        flex-direction: column;
+    }
+
+    .acoes button {
+        width: 100%;
+    }
+
+    .recibo {
+        padding: 22px 16px;
+    }
+
+    .assinatura {
+        width: 90%;
+    }
+}
+
+/* ================================
+   IMPRESSÃO / PDF A4
+================================ */
+
+@page {
+    size: A4;
+    margin: 2cm;
+}
+
+@media print {
+    body {
+        min-height: auto;
+        background: #ffffff;
+        color: #000000;
+        font-size: 12pt;
+    }
+
+    .cabecalho,
+    .painel-formulario,
+    .painel-previa > h2,
+    #mensagem-inicial,
+    .acoes-documento {
+        display: none !important;
+    }
+
+    .container {
+        display: block;
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .painel-previa {
+        display: block;
+        margin: 0;
+        padding: 0;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .recibo {
+        display: block !important;
+        width: 100%;
+        padding: 0;
+        border: none;
+        overflow: visible;
+    }
+
+    .numero-recibo {
+        margin-bottom: 28px;
+    }
+
+    .recibo h2 {
+        margin-bottom: 32px;
+        font-size: 16pt;
+    }
+
+    #saida-texto,
+    #saida-valor-extenso {
+        font-size: 12pt;
+        line-height: 1.8;
+    }
+
+    #saida-local-data {
+        margin-top: 32px;
+    }
+
+    .assinatura {
+        margin-top: 80px;
+        break-inside: avoid;
+    }
+}
