@@ -103,8 +103,6 @@ function gerarRecibo(evento) {
         `Declaro que o pagamento corresponde ao serviço descrito e dou ` +
         `quitação exclusivamente quanto ao valor aqui recebido.`;
 
-    saidaValorExtenso.textContent = `Valor por extenso: ${extenso}.`;
-
     saidaLocalData.textContent = `${local}, ${formatarData(data)}.`;
 
     saidaRecebedor.textContent = nome;
@@ -135,7 +133,7 @@ const tipoDocumento = document.getElementById("tipo-documento");
 
 const placeholdersDocumento = {
     CPF: "000.000.000-00",
-    RG: "Digite o número do RG",
+    RG: "00000000-0",
     CNH: "00000000000",
     CNPJ: "00.000.000/0000-00",
 };
@@ -186,10 +184,9 @@ function formatarDocumento(valor, tipo) {
             return numeros.slice(0, 11);
 
         case "RG":
-            return valor
-                .toUpperCase()
-                .replace(/[^0-9X]/g, "")
-                .slice(0, 14);
+            numeros = numeros.slice(0, 9);
+
+            return numeros.replace(/^(\d{8})(\d)/, "$1-$2");
     }
 
     return valor;
