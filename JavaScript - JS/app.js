@@ -66,6 +66,8 @@ function gerarRecibo(evento) {
 
     const nome = campoNome.value.trim();
     const documento = campoDocumento.value.trim();
+    const tipo = tipoDocumento.value;
+    const documentoFormatado = `${tipo} ${documento}`;
     if (!validarDocumento()) {
         return;
     }
@@ -96,7 +98,7 @@ function gerarRecibo(evento) {
     // textContent evita interpretar os dados digitados como HTML.
     saidaTexto.textContent =
         `Eu, ${nome}, portador(a) do documento ` +
-        `${documento || "não informado"}, declaro ter recebido ` +
+        `${documentoFormatado || "não informado"}, declaro ter recebido ` +
         `a quantia de ${valorFormatado} (${extenso}) da empresa rural ` +
         `${CONFIG.empresa.nome}, sediada na ${CONFIG.empresa.endereco}. ` +
         `O valor recebido é referente a: ${descricao}. ` +
